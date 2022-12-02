@@ -53,7 +53,7 @@ module EventMachine
         begin
           certificate_store.add_cert(@last_seen_cert)
         rescue OpenSSL::X509::StoreError => e
-          raise e unless e.message == 'cert already in hash table'
+          raise e unless e.message =~ /cert already in hash table/
         end
         true
       else
